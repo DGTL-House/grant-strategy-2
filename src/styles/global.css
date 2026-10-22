@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* Self-hosted Lexend (variable, latin) — no render-blocking third-party font
+   request. display:swap avoids invisible text. */
+@font-face {
+    font-family: "Lexend";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/fonts/lexend-var.woff2") format("woff2");
+}
+
+/* ============================================================
+   Design tokens — to be filled from the Figma variables of the
+   grant-strategy-2 layout (colours, type scale, radii, spacing).
+   ============================================================ */
+
+@theme {
+    --font-sans: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* keep anchored sections clear of the fixed header */
+    scroll-padding-top: 96px;
+}
+
+body {
+    margin: 0;
+    background-color: #ffffff;
+    color: #161514;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+button,
+a {
+    cursor: pointer;
+}
+
+/* ============================================================
+   Scroll reveal (ported from nonprofit-next)
+   Gated behind `.js`: with no JavaScript the content stays fully
+   visible, so a blocked script never hides copy.
+   ============================================================ */
+
+.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+        transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+.js .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1),
+        transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.js .reveal-stagger.is-visible > * {
+    opacity: 1;
+    transform: none;
+}
+
+.js .reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+.js .reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+.js .reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.24s; }
+.js .reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.32s; }
+.js .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
