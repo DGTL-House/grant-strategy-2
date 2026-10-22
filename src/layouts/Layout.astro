@@ -105,6 +105,62 @@ const siteLd = {
       crossorigin
     />
 
+    <!-- GTM + GA4 — same IDs as the `nonprofit` project, with its deferred
+         loader. The stubs queue events from the first paint; the libraries
+         themselves load on the first real interaction, or ~3.5s after `load`,
+         so they stay out of the LCP window. -->
+    <script is:inline>
+      (function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+        window.gtag = function () {
+          window.dataLayer.push(arguments);
+        };
+        gtag("js", new Date());
+        gtag("config", "G-T660MYBD46");
+
+        function loadTags() {
+          if (window.__tagsLoaded) return;
+          window.__tagsLoaded = true;
+          [
+            "https://www.googletagmanager.com/gtm.js?id=GTM-P72X9ZR4",
+            "https://www.googletagmanager.com/gtag/js?id=G-T660MYBD46",
+          ].forEach(function (src) {
+            var s = document.createElement("script");
+            s.async = true;
+            s.src = src;
+            document.head.appendChild(s);
+          });
+        }
+
+        var events = ["scroll", "mousemove", "touchstart", "keydown", "click"];
+        function trigger() {
+          events.forEach(function (e) {
+            window.removeEventListener(e, trigger);
+          });
+          loadTags();
+        }
+        events.forEach(function (e) {
+          window.addEventListener(e, trigger, { passive: true, once: true });
+        });
+
+        // requestIdleCallback's `timeout` is an upper bound, not a delay, so a
+        // real timer provides the floor and rIC only picks a quiet moment.
+        function whenIdle() {
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(loadTags, { timeout: 2000 });
+          } else {
+            loadTags();
+          }
+        }
+        function startTimer() {
+          setTimeout(whenIdle, 3500);
+        }
+        if (document.readyState === "complete") startTimer();
+        else window.addEventListener("load", startTimer, { once: true });
+      })();
+    </script>
+
     <!-- Meta Pixel — same ID as nonprofit-next -->
     <script is:inline>
       !function(f,b,e,v,n,t,s)
@@ -134,6 +190,15 @@ const siteLd = {
       src="https://t.contentsquare.net/uxa/fc16179df91a5.js"></script>
   </head>
   <body class="min-h-screen">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-P72X9ZR4"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+
     <slot />
 
     <!-- Forward UTM / click-id params (fbclid, gclid, utm_*) from the landing

@@ -8,10 +8,10 @@ import sitemap from "@astrojs/sitemap";
 // plugin, stylesheet inlined into the page.
 //
 // `site` drives canonical / OG absolute URLs, robots.txt and the sitemap.
-// The production domain isn't fixed yet, so it comes from SITE_URL — set it in
-// the Vercel project once the domain is known. The fallback is a placeholder,
-// not a guess at the real domain.
-const site = process.env.SITE_URL ?? "https://grant-strategy-2.example.com";
+// SITE_URL overrides it (e.g. for a preview domain); the default is the
+// production domain. https, not http: Vercel serves the site over TLS, and an
+// http canonical would point crawlers at a redirect.
+const site = process.env.SITE_URL ?? "https://grant-strategy.dgtl-house.com";
 
 export default defineConfig({
   site,
