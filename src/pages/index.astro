@@ -1,10 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-// Sections are built one by one from the Figma layout and slotted in here.
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import CaseStudies from "../components/CaseStudies.astro";
+import Problem from "../components/Problem.astro";
+import BeforeAfter from "../components/BeforeAfter.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import CallAgenda from "../components/CallAgenda.astro";
+import WhoWeAre from "../components/WhoWeAre.astro";
+import Proof from "../components/Proof.astro";
+import FinalCTA from "../components/FinalCTA.astro";
+import Footer from "../components/Footer.astro";
+import MobileNav from "../components/MobileNav.astro";
 ---
 
 <Layout>
   <span id="top" aria-hidden="true"></span>
-  <main id="main-content" aria-label="Main content"></main>
+  <Header />
+  <main id="main-content">
+    <Hero />
+    <CaseStudies />
+    <Problem />
+    <BeforeAfter />
+    <HowItWorks />
+    <CallAgenda />
+    <WhoWeAre />
+    <Proof />
+    <FinalCTA />
+  </main>
+  <Footer />
+  <MobileNav />
 </Layout>

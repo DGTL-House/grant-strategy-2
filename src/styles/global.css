@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
-/* Self-hosted Lexend (variable, latin) — no render-blocking third-party font
-   request. display:swap avoids invisible text. */
+/* Self-hosted fonts — no render-blocking third-party font request.
+   display:swap avoids invisible text. Lexend is the variable latin build;
+   Roboto Mono is only used for the small uppercase eyebrows/labels, so a
+   single 500 weight is enough. */
 @font-face {
     font-family: "Lexend";
     font-style: normal;
@@ -10,14 +12,46 @@
     src: url("/fonts/lexend-var.woff2") format("woff2");
 }
 
+@font-face {
+    font-family: "Roboto Mono";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("/fonts/roboto-mono-500.woff2") format("woff2");
+}
+
 /* ============================================================
-   Design tokens — to be filled from the Figma variables of the
-   grant-strategy-2 layout (colours, type scale, radii, spacing).
+   Design tokens — sampled from the Figma PDF export of the
+   grant-strategy layout (frame 1440 / 375).
    ============================================================ */
 
 @theme {
     --font-sans: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
+    --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-logo: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    --color-ink: #161514;
+    --color-body: #52504c;
+    --color-muted: #7a7770;
+    --color-lime: #c4ed82;
+    --color-lime-soft: #e5f3ca;
+    --color-lime-line: #aac976;
+    --color-olive: #3f5028;
+    --color-forest: #16210f;
+    --color-cream: #f8f7f3;
+    --color-sand: #f0eee6;
+    --color-line: #dcdbd6;
+    --color-dot: #cbcfc4;
+    --color-rose: #f2e6e1;
+    --color-rose-line: #e3cdc7;
+    --color-wine: #812626;
+    --color-blush: #fcf3f2;
+    --color-blush-line: #e2c3c2;
+    --color-mint: #eef5e0;
+    --color-star: #ff302b;
+
+    --breakpoint-xs: 30rem;
 }
 
 /* ============================================================
@@ -30,14 +64,14 @@
 
 html {
     scroll-behavior: smooth;
-    /* keep anchored sections clear of the fixed header */
-    scroll-padding-top: 96px;
+    /* keep anchored sections clear of the sticky header */
+    scroll-padding-top: 88px;
 }
 
 body {
     margin: 0;
     background-color: #ffffff;
-    color: #161514;
+    color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -46,6 +80,192 @@ body {
 button,
 a {
     cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ============================================================
+   Shared components
+   ============================================================ */
+
+@layer components {
+    /* 1280 content column at 1440, 1440 at 1920 (Figma 1920 frame). */
+    .container-page {
+        width: 100%;
+        max-width: 1600px;
+        margin-inline: auto;
+        padding-inline: 20px;
+    }
+    @media (min-width: 768px) {
+        .container-page {
+            padding-inline: 40px;
+        }
+    }
+    @media (min-width: 1280px) {
+        .container-page {
+            padding-inline: 80px;
+        }
+    }
+
+    .section {
+        padding-block: 32px;
+    }
+    @media (min-width: 768px) {
+        .section {
+            padding-block: 56px;
+        }
+    }
+    @media (min-width: 1280px) {
+        .section {
+            padding-block: 80px;
+        }
+    }
+
+    .eyebrow {
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--color-body);
+    }
+
+    .h1 {
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 1.03;
+        letter-spacing: -0.01em;
+        color: var(--color-ink);
+    }
+    @media (min-width: 768px) {
+        .h1 {
+            font-size: 56px;
+        }
+    }
+    @media (min-width: 1280px) {
+        .h1 {
+            font-size: 72px;
+            line-height: 1.05;
+        }
+    }
+
+    .h2 {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        color: var(--color-ink);
+    }
+    @media (min-width: 768px) {
+        .h2 {
+            font-size: 44px;
+        }
+    }
+    @media (min-width: 1280px) {
+        .h2 {
+            font-size: 56px;
+            line-height: 1.07;
+        }
+    }
+
+    .lead {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 1.5;
+        color: var(--color-body);
+        text-wrap: pretty;
+    }
+    @media (min-width: 1280px) {
+        .lead {
+            font-size: 24px;
+        }
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        border-radius: 999px;
+        font-weight: 500;
+        text-decoration: none;
+        white-space: nowrap;
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+    .btn:focus-visible {
+        outline: 2px solid var(--color-olive);
+        outline-offset: 3px;
+    }
+
+    .btn-primary {
+        background: var(--color-lime);
+        color: var(--color-olive);
+    }
+    .btn-primary:hover {
+        background: #b7e46d;
+        box-shadow: 0 8px 24px -10px rgb(63 80 40 / 0.45);
+    }
+    .btn-primary:active {
+        transform: translateY(1px);
+    }
+
+    .btn-secondary {
+        background: var(--color-cream);
+        color: var(--color-body);
+        border: 1px solid #e9e8e2;
+    }
+    .btn-secondary:hover {
+        background: #f0efe9;
+    }
+
+    /* 56px on mobile, 72px on desktop — the Figma "large" CTA. */
+    .btn-lg {
+        height: 56px;
+        padding-inline: 20px;
+        font-size: 18px;
+    }
+    @media (min-width: 1280px) {
+        .btn-lg {
+            height: 72px;
+            padding-inline: 48px;
+            font-size: 24px;
+        }
+    }
+
+    .card-cream {
+        background: var(--color-cream);
+        border: 1px solid var(--color-line);
+    }
+
+    .dark-panel {
+        background: var(--color-forest);
+        border: 1px solid var(--color-lime-line);
+        color: #fff;
+    }
+}
+
+/* ============================================================
+   Marquee (case-study organisation pills)
+   ============================================================ */
+
+@keyframes marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-track {
+    animation: marquee 40s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
 }
 
 /* ============================================================
@@ -87,10 +307,18 @@ a {
 .js .reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.40s; }
 
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     .reveal,
     .reveal-stagger > * {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
+    }
+
+    .marquee-track {
+        animation: none;
     }
 }

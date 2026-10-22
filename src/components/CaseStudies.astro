@@ -1,0 +1,425 @@
+---
+import Icon from "./Icon.astro";
+
+const orgs = [
+  "Green Earth Fund",
+  "Shelter First",
+  "Veterans United",
+  "Animal Rescue Alliance",
+  "City Food Bank",
+  "Mental Health Matters",
+  "Education Unlocked",
+];
+
+const cases = [
+  {
+    tag: "Refugee support",
+    title: "Refugee support organization",
+    subtitle: "Helping more people discover refugee support services",
+    metrics: [
+      ["$7,600/mo", "Grant budget used"],
+      ["+1,240/mo", "Relevant website visitors"],
+      ["+680%", "Ad-driven traffic"],
+    ],
+    person: { name: "Sarah M.", role: "Head of Development", photo: "av-sarah-m" },
+    quote:
+      "We finally have a reliable flow of relevant visitors from Google Ads. DGTL-House built our website, secured our Google Ad Grant, and launched our campaigns in just one month. Now, over 200 people call us every month after finding us on Google.",
+    shot: { src: "case-refugee", w: 1150, h: 593 },
+    steps: [
+      "The nonprofit wasn't using its Google Ad Grant effectively and was missing out on relevant search traffic.",
+      "Rebuilt campaigns around relevant searches and improved targeting.",
+      "$7,600/mo spent. A steady flow of relevant visitors to the website with the account back on track.",
+    ],
+  },
+  {
+    tag: "Education",
+    title: "Education nonprofit",
+    subtitle:
+      "Connecting educational programs with the people searching for them.",
+    metrics: [
+      ["~66× growth", "Budget utilisation"],
+      ["+2,180/mo", "Relevant website visitors"],
+      ["+420%", "Search traffic"],
+    ],
+    person: { name: "Michael C.", role: "Program Director", photo: "av-michael-c" },
+    quote:
+      "We went from barely using our Google Ad Grant to reaching thousands of people interested in our educational programs. DGTL-House helped us turn an underperforming account into a reliable source of relevant website traffic.",
+    shot: { src: "case-education", w: 1151, h: 579 },
+    steps: [
+      "$150/mo of $10K. Broad keywords, low CTR, and a high share of irrelevant traffic.",
+      "Tightened keyword targeting, restructured ad groups, improved CTR, and added program-specific landing pages.",
+      "~$10,000/mo spent. A consistent flow of relevant visitors to the website.",
+    ],
+  },
+  {
+    tag: "Animal welfare",
+    title: "Coastal Animal Rescue",
+    subtitle: "Reaching more people who care about animal welfare.",
+    metrics: [
+      ["~$10,000/mo", "Budget utilisation"],
+      ["+2,940/mo", "Relevant website visitors"],
+      ["+1,050%", "Google Ads traffic"],
+    ],
+    person: { name: "Danielle B.", role: "Executive Director", photo: "av-danielle-b" },
+    quote:
+      "We went from no Google Ads to a steady stream of relevant website visitors. DGTL-House helped us secure the grant, launch our campaigns, and reach thousands of people who care about animal welfare.",
+    shot: { src: "case-animal", w: 1169, h: 538 },
+    steps: [
+      "No active Google Ads campaigns or grant-funded website traffic.",
+      "Secured the Google Ad Grant, built the account from scratch, structured campaigns around relevant search traffic.",
+      "~$10,000/mo consistently spent. A steady flow of relevant visitors from Google Ads every month.",
+    ],
+  },
+  {
+    tag: "Youth mentorship",
+    title: "Youth mentorship nonprofit",
+    subtitle: "Helping more people find youth mentorship programs.",
+    metrics: [
+      ["~100%", "Budget utilisation"],
+      ["+1,860/mo", "Relevant website visitors"],
+      ["+390%", "Organic + paid traffic"],
+    ],
+    person: { name: "Emily T.", role: "Executive Director", photo: "av-emily-t" },
+    quote:
+      "Our Google Ad Grant is finally making a difference. DGTL-House helped us turn an unused grant into a reliable source of website traffic, connecting more people.",
+    shot: { src: "case-youth", w: 1149, h: 601 },
+    steps: [
+      "No Google Ad Grant. No Google Ads account and no grant-funded website traffic.",
+      "Set up the account and optimized campaigns around relevant searches.",
+      "Nearly the full $10,000 monthly grant put to use, bringing more visitors to the organization's website.",
+    ],
+  },
+];
+
+const stepTitles = ["Before", "What we did", "Result"];
+
+---
+
+<section id="results" class="section" aria-labelledby="cases-title">
+  <div class="container-page text-center">
+    <p class="eyebrow reveal">Case studies</p>
+    <h2 id="cases-title" class="h2 reveal mx-auto mt-5 max-w-[1040px]">
+      See what happens when your Google Ad Grant works harder
+    </h2>
+    <p class="lead reveal mx-auto mt-4 max-w-[1040px] xl:mt-6">
+      From unused Google Ad Grant to thousands of relevant website visitors.
+      Explore how we've helped nonprofits make better use of their $10,000
+      monthly advertising budget.
+    </p>
+  </div>
+
+  <!-- Organisation pills — decorative marquee, duplicated for a seamless loop. -->
+  <div class="marquee mt-8 overflow-hidden xl:mt-14" aria-hidden="true">
+    <ul class="marquee-track flex w-max gap-2.5">
+      {
+        [...orgs, ...orgs].map((org) => (
+          <li class="flex h-12 items-center whitespace-nowrap rounded-[12px] border border-[#e4e3df] px-5 text-[16px] font-medium text-ink xl:h-[50px] xl:text-[18px]">
+            {org}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div
+    class="mt-6 xl:mt-14"
+    data-carousel
+    role="region"
+    aria-roledescription="carousel"
+    aria-label="Client case studies"
+  >
+    <div class="overflow-hidden">
+      <ul
+        class="flex items-stretch gap-4 xl:gap-[49px] [touch-action:pan-y]"
+        data-track
+      >
+        {
+          cases.map((c) => (
+            <li
+              class="w-[calc(100vw-60px)] shrink-0 md:w-[560px] xl:w-[min(1108px,calc(100vw-160px))]"
+              data-slide
+            >
+              <article class="grid h-full gap-2.5 text-left xl:grid-cols-[470fr_627fr] xl:gap-[11px]">
+                <div class="flex flex-col gap-2.5">
+                  <header class="rounded-[24px] border border-[#dfe8cf] bg-mint px-[17px] pb-5 pt-4 xl:px-[26px] xl:pb-[26px] xl:pt-[25px]">
+                    <span class="inline-block rounded-[6px] bg-[#d4f0a7] px-2.5 py-1.5 font-mono text-[9px] font-medium uppercase leading-none text-olive">
+                      {c.tag}
+                    </span>
+                    <h3 class="mt-3 text-[18px] font-medium leading-tight text-ink xl:mt-[13px] xl:text-[22px]">
+                      {c.title}
+                    </h3>
+                    <p class="mt-1.5 text-[12px] leading-snug text-body">{c.subtitle}</p>
+                  </header>
+
+                  <div class="flex flex-1 flex-col rounded-[24px] border border-[#ecebe6] bg-cream p-[17px] xl:p-[26px]">
+                    <dl class="grid grid-cols-[auto_auto_auto] justify-between xl:justify-start xl:pt-3">
+                      {c.metrics.map(([value, label], i) => (
+                        <div
+                          class:list={[
+                            "flex flex-col-reverse justify-end",
+                            i > 0 &&
+                              "border-l border-[#e3e2dd] pl-2.5 xl:pl-[18px]",
+                            i < 2 && "pr-2 xl:pr-[18px]",
+                          ]}
+                        >
+                          <dt class="mt-1 whitespace-nowrap text-[8px] leading-snug text-body xl:text-[11px]">
+                            {label}
+                          </dt>
+                          <dd class="whitespace-nowrap text-[12.5px] font-medium leading-tight text-ink xl:text-[18px]">
+                            {value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+
+                    <figure class="mt-4 flex flex-1 flex-col rounded-[16px] bg-white p-3 xl:mt-5 xl:p-[18px]">
+                      <figcaption class="flex items-center gap-3">
+                        <img
+                          src={`/img/${c.person.photo}.webp`}
+                          alt=""
+                          width="48"
+                          height="48"
+                          loading="lazy"
+                          decoding="async"
+                          class="size-[26px] rounded-full object-cover xl:size-[37px]"
+                        />
+                        <span class="flex-1">
+                          <span class="block text-[10px] font-semibold text-ink xl:text-[12px]">
+                            {c.person.name}
+                          </span>
+                          <span class="block text-[9px] text-ink/80 xl:text-[11px]">
+                            {c.person.role}
+                          </span>
+                        </span>
+                        <span class="flex items-center gap-1 text-[6px] text-[#17313b] xl:text-[7px]">
+                          Powered by
+                          <img
+                            src="/img/clutch.webp"
+                            alt="Clutch"
+                            width="225"
+                            height="64"
+                            loading="lazy"
+                            class="h-2.5 w-auto xl:h-[13px]"
+                          />
+                        </span>
+                      </figcaption>
+                      <div class="mt-3 flex items-center justify-between xl:mt-4">
+                        <span class="flex gap-0.5 text-star" aria-label="Rated 4.9 out of 5">
+                          {[0, 1, 2, 3, 4].map(() => (
+                            <Icon name="star" size={17} class="size-3.5 xl:size-[17px]" />
+                          ))}
+                        </span>
+                        <span class="text-[11px] font-medium text-ink xl:text-[14px]">4.9</span>
+                      </div>
+                      <blockquote class="mt-3 text-[10px] leading-normal text-ink xl:mt-4 xl:text-[11px]">
+                        “{c.quote}”
+                      </blockquote>
+                      <p class="mt-auto flex items-center gap-1.5 pt-3 text-[8px] text-ink xl:text-[9px]">
+                        <Icon name="verified" size={12} class="text-ink" />
+                        Verified Review
+                      </p>
+                    </figure>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-2.5 rounded-[24px] border border-[#ecebe6] bg-cream p-2.5 xl:p-[25px]">
+                  <figure class="rounded-[16px] border border-[#ecebe6] bg-white p-2.5 pb-3">
+                    <div class="relative overflow-hidden rounded-[12px] bg-[#edeef1]">
+                      <img
+                        src={`/img/${c.shot.src}.webp`}
+                        alt={`Google Ads account screenshot — ${c.title}`}
+                        width={c.shot.w}
+                        height={c.shot.h}
+                        loading="lazy"
+                        decoding="async"
+                        class="aspect-[261/232] w-full object-contain px-[2%] xl:aspect-[556/230] xl:px-[4%] xl:pt-[2%]"
+                      />
+                      <button
+                        type="button"
+                        class="absolute bottom-3 right-3 grid size-10 place-items-center rounded-full bg-lime text-olive transition hover:scale-105"
+                        aria-label="Enlarge screenshot"
+                        data-zoom={`/img/${c.shot.src}.webp`}
+                        data-zoom-alt={`Google Ads account screenshot — ${c.title}`}
+                      >
+                        <Icon name="expand" size={18} />
+                      </button>
+                    </div>
+                    <figcaption class="mt-2 font-mono text-[9px] font-medium uppercase tracking-[0.02em] text-body">
+                      Google Ads · real account · verified screenshot
+                    </figcaption>
+                  </figure>
+
+                  <ol class="grid flex-1 gap-2.5 xl:grid-cols-3">
+                    {c.steps.map((text, i) => (
+                      <li class="rounded-[16px] bg-white p-4 xl:px-[15px] xl:py-[17px]">
+                        <p class="flex items-center gap-2 text-[14px] font-medium text-ink">
+                          <span class="grid size-[23px] place-items-center rounded-full bg-lime text-[12px] text-olive">
+                            {i + 1}
+                          </span>
+                          {stepTitles[i]}
+                        </p>
+                        <p class="mt-3 text-[12px] leading-normal text-body">{text}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="mt-8 flex items-center justify-center gap-4 xl:mt-14">
+      <button
+        type="button"
+        class="grid size-[42px] place-items-center rounded-[12px] border border-[#d9d8d3] bg-cream text-body transition hover:bg-[#efeee8]"
+        aria-label="Previous case study"
+        data-prev
+      >
+        <Icon name="chevron-left" size={18} />
+      </button>
+      <div class="flex items-center gap-[9px]" aria-label="Choose a case study" role="group">
+        {
+          cases.map((c, i) => (
+            <button
+              type="button"
+              class="h-2 w-2 rounded-full bg-dot transition-all aria-[current=true]:w-4 aria-[current=true]:bg-olive"
+              aria-label={c.title}
+              aria-current={i === 0 ? "true" : "false"}
+              data-dot={i}
+            />
+          ))
+        }
+      </div>
+      <button
+        type="button"
+        class="grid size-[42px] place-items-center rounded-[12px] border border-[#d9d8d3] bg-cream text-body transition hover:bg-[#efeee8]"
+        aria-label="Next case study"
+        data-next
+      >
+        <Icon name="chevron-right" size={18} />
+      </button>
+    </div>
+  </div>
+
+  <dialog
+    id="shot-dialog"
+    class="m-auto max-h-[90vh] w-[min(1200px,94vw)] rounded-[20px] bg-white p-3 backdrop:bg-black/70"
+    aria-label="Screenshot"
+  >
+    <form method="dialog" class="flex justify-end">
+      <button
+        class="grid size-10 place-items-center rounded-full bg-lime text-ink"
+        aria-label="Close"
+      >
+        <Icon name="close" size={20} />
+      </button>
+    </form>
+    <img src="" alt="" class="mt-2 w-full rounded-[12px]" data-shot />
+  </dialog>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-carousel]")!;
+  const track = root.querySelector<HTMLElement>("[data-track]")!;
+  const dots = [...root.querySelectorAll<HTMLButtonElement>("[data-dot]")];
+  const count = dots.length;
+
+  // Seamless loop: an inert copy of the set on each side of the real slides;
+  // the track jumps across the copies without animation (see normalise()).
+  const real = [...track.querySelectorAll<HTMLElement>("[data-slide]")];
+  const copy = () => real.map((s) => s.cloneNode(true) as HTMLElement);
+  track.prepend(...copy());
+  track.append(...copy());
+  const slides = [...track.querySelectorAll<HTMLElement>("[data-slide]")];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let index = count; // first real slide (middle copy)
+
+  function step() {
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    return slides[0].offsetWidth + gap;
+  }
+
+  function render(animate: boolean) {
+    const viewport = track.parentElement!.clientWidth;
+    const offset = (viewport - slides[0].offsetWidth) / 2 - index * step();
+    track.style.transition =
+      animate && !reduce ? "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)" : "none";
+    track.style.transform = `translate3d(${offset}px,0,0)`;
+    const real = ((index % count) + count) % count;
+    dots.forEach((d, i) => d.setAttribute("aria-current", String(i === real)));
+    // Only the centred real slide is reachable for keyboard / screen readers.
+    slides.forEach((s, i) => {
+      const active = i === index;
+      s.toggleAttribute("inert", !active);
+      if (active) s.removeAttribute("aria-hidden");
+      else s.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  function go(to: number) {
+    index = to;
+    render(true);
+    if (reduce) normalise();
+  }
+
+  // After a move into a clone copy, jump to the matching real slide.
+  function normalise() {
+    if (index < count || index >= count * 2) {
+      index = count + (((index % count) + count) % count);
+      render(false);
+    }
+  }
+
+  track.addEventListener("transitionend", (e) => {
+    if (e.target === track) normalise();
+  });
+  root.querySelector("[data-prev]")!.addEventListener("click", () => go(index - 1));
+  root.querySelector("[data-next]")!.addEventListener("click", () => go(index + 1));
+  dots.forEach((d, i) => d.addEventListener("click", () => go(count + i)));
+
+  // Swipe / drag.
+  let startX = 0;
+  let dx = 0;
+  let dragging = false;
+  let base = 0;
+  track.addEventListener("pointerdown", (e) => {
+    if ((e.target as HTMLElement).closest("button, a")) return;
+    dragging = true;
+    startX = e.clientX;
+    dx = 0;
+    base = new DOMMatrix(getComputedStyle(track).transform).m41;
+    track.style.transition = "none";
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    dx = e.clientX - startX;
+    track.style.transform = `translate3d(${base + dx}px,0,0)`;
+  });
+  const end = () => {
+    if (!dragging) return;
+    dragging = false;
+    if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
+    else render(true);
+  };
+  window.addEventListener("pointerup", end);
+  window.addEventListener("pointercancel", end);
+
+  new ResizeObserver(() => render(false)).observe(track.parentElement!);
+  render(false);
+
+  // Screenshot lightbox.
+  const dialog = document.getElementById("shot-dialog") as HTMLDialogElement;
+  const shot = dialog.querySelector<HTMLImageElement>("[data-shot]")!;
+  document.querySelectorAll<HTMLButtonElement>("[data-zoom]").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      shot.src = btn.dataset.zoom!;
+      shot.alt = btn.dataset.zoomAlt ?? "";
+      dialog.showModal();
+    }),
+  );
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+</script>

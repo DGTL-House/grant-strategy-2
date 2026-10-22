@@ -1,0 +1,135 @@
+---
+import { BOOK_HREF } from "../consts";
+import Icon from "./Icon.astro";
+import PartnerChips from "./PartnerChips.astro";
+
+// Google Ads "scorecard" under the CTAs — real grant-account numbers.
+const tiles = [
+  {
+    label: "Ad clicks",
+    value: "5.18K",
+    bg: "bg-[#4285f4]",
+    fg: "text-white",
+    line: "M2 18c10 2 16-1 26-4s20 0 32-6 22-2 30-3",
+  },
+  {
+    label: "Tracked conversions",
+    value: "248",
+    bg: "bg-[#fbbc05]",
+    fg: "text-[#3c4043]",
+    line: "M2 19c9-2 14-1 22-4s14 1 24-3 18-3 26-3 12-1 16-2",
+  },
+  {
+    label: "Grant budget used",
+    value: "$9.98K",
+    bg: "bg-[#34a853]",
+    fg: "text-white",
+    line: "M2 15c9 3 18 3 28 0s16 2 28-1 22-6 32-7",
+  },
+];
+---
+
+<section class="pb-8 pt-2 md:pb-14 xl:pb-20" aria-labelledby="hero-title">
+  <div class="container-page">
+    <picture>
+      <source
+        media="(min-width: 1280px)"
+        srcset="/img/hero-1280.webp 1280w, /img/hero-2560.webp 2560w"
+        sizes="(min-width: 1600px) 1440px, calc(100vw - 160px)"
+      />
+      <source
+        media="(min-width: 768px)"
+        srcset="/img/hero-1536.webp 1536w"
+        sizes="calc(100vw - 80px)"
+      />
+      <img
+        src="/img/hero-750.webp"
+        alt="Smiling volunteers in blue “Volunteer” T-shirts working together outdoors"
+        width="750"
+        height="358"
+        fetchpriority="high"
+        decoding="async"
+        class="aspect-[335/160] w-full rounded-[24px] object-cover md:aspect-[1536/540] md:rounded-[40px] xl:aspect-auto xl:h-[310px] xl:rounded-[48px]"
+      />
+    </picture>
+
+    <div class="mx-auto mt-6 max-w-[1280px] text-center xl:mt-12">
+      <PartnerChips />
+
+      <h1 id="hero-title" class="h1 mx-auto mt-3 max-w-[1220px] xl:mt-8">
+        Your nonprofit has $10,000/month <br class="hidden xl:inline" />in free
+        Google Ads
+      </h1>
+
+      <p class="lead mx-auto mt-4 max-w-[340px] xs:max-w-[560px] xl:mt-7 xl:max-w-[830px]">
+        We'll review your account, identify what's holding it back, and show you
+        how to reach more people who care about your mission
+      </p>
+
+      <div
+        class="mt-5 flex flex-col items-stretch justify-center gap-2 sm:flex-row sm:items-center sm:gap-4 xl:mt-8"
+      >
+        <a href={BOOK_HREF} class="btn btn-primary btn-lg">
+          Book a free consultation
+          <Icon name="arrow-right" size={18} />
+        </a>
+        <a href="#results" class="btn btn-secondary btn-lg"
+          >See Client Results</a
+        >
+      </div>
+    </div>
+
+    <figure
+      class="mx-auto mt-6 max-w-[768px] overflow-hidden rounded-[24px] border border-[#ecebe7] bg-white shadow-[0_30px_60px_-30px_rgba(22,21,20,0.18)] xl:mt-12"
+    >
+      <figcaption
+        class="flex flex-col gap-2 px-4 py-3.5 sm:h-[60px] sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-0"
+      >
+        <span class="flex items-center gap-2.5 text-[16px]">
+          <Icon name="google-ads" size={26} />
+          <span class="font-semibold text-[#202124]"
+            >Google <span class="font-normal text-[#3c4043]">Ads</span></span
+          >
+        </span>
+        <span
+          class="inline-flex h-6 items-center gap-2 self-stretch rounded-full bg-[#e6f4ea] px-3 text-[12px] font-semibold uppercase tracking-[0.02em] text-[#188038] sm:self-auto"
+        >
+          <span class="size-1.5 rounded-full bg-[#188038]" aria-hidden="true"
+          ></span>
+          Real Google Ad Grant results
+        </span>
+      </figcaption>
+      <dl class="grid sm:grid-cols-3">
+        {
+          tiles.map((t) => (
+            <div
+              class:list={[
+                "flex h-32 flex-col px-5 pt-4 sm:h-36 sm:pt-[22px]",
+                t.bg,
+                t.fg,
+              ]}
+            >
+              <dt class="text-[14px] leading-tight">{t.label}</dt>
+              <dd class="mt-2 text-[22px] font-bold leading-none tracking-[-0.02em] sm:mt-2.5 sm:text-[30px]">
+                {t.value}
+              </dd>
+              <svg
+                class="mx-auto mt-auto mb-5 w-[100px] sm:mb-6 sm:ml-[58px]"
+                viewBox="0 0 100 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d={t.line}
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          ))
+        }
+      </dl>
+    </figure>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+import { BOOK_CALL } from "../consts";
+import Icon from "./Icon.astro";
+import PartnerChips from "./PartnerChips.astro";
+
+// Every on-page CTA scrolls here (#book); this button opens the booking widget.
+---
+
+<section id="book" class="section" aria-labelledby="book-title">
+  <div class="container-page">
+    <div
+      class="reveal card-cream rounded-[32px] p-4 xl:rounded-[48px] xl:px-20 xl:py-20"
+    >
+      <div
+        class="mx-auto max-w-[960px] rounded-[24px] bg-white px-5 py-6 text-center shadow-[0_24px_48px_-24px_rgba(22,21,20,0.14)] md:px-10 md:py-12 xl:rounded-[40px] xl:px-16 xl:py-16"
+      >
+        <PartnerChips compact />
+        <h2
+          id="book-title"
+          class="mx-auto mt-5 max-w-[800px] text-[32px] font-medium leading-[1.05] text-black xl:mt-6 xl:text-[48px]"
+        >
+          Ready to unlock $10,000/month <br class="hidden md:inline" />for your
+          nonprofit?
+        </h2>
+        <p class="lead mx-auto mt-4 max-w-[790px] xl:mt-5">
+          Book a free 30-min call with a specialist. See exactly what's holding
+          it back — live, on your account.
+        </p>
+        <a
+          href={BOOK_CALL}
+          class="btn btn-primary btn-lg mt-6 w-full sm:w-auto xl:mt-8 xl:min-w-[428px]"
+        >
+          Book a Free Consultation
+          <Icon name="arrow-right" size={18} class="hidden sm:block" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

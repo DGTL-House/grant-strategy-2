@@ -7,11 +7,9 @@ interface Props {
   image?: string;
 }
 
-// Copy is placeholder until the page's own marketing copy comes from the
-// Figma layout — this landing has a different angle from nonprofit-next.
 const {
-  title = "Google Ad Grant Strategy for Nonprofits | DGTL House",
-  description = "A Google Ad Grants strategy for US nonprofits — put the full $10,000/month to work and bring relevant visitors to your website.",
+  title = "Your Nonprofit Has $10,000/Month in Free Google Ads | DGTL House",
+  description = "Free 30-min Google Ad Grant review for US nonprofits: see what's holding your $10,000/month grant back and how to reach more people who care about your mission.",
   image = "/og-image.webp",
 } = Astro.props;
 
@@ -28,7 +26,7 @@ const orgLd = {
   logo: new URL("/nonprofit-logo.svg", siteUrl).href,
   image: ogImage,
   email: "nonprofit@dgtl-house.com",
-  telephone: "+12245848401",
+  telephone: "+12243134445",
   address: {
     "@type": "PostalAddress",
     streetAddress: "1635 Eagle Grove Ct.",
@@ -100,6 +98,13 @@ const siteLd = {
     <link
       rel="preload"
       href="/fonts/lexend-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/roboto-mono-500.woff2"
       as="font"
       type="font/woff2"
       crossorigin

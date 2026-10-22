@@ -1,0 +1,52 @@
+---
+// "What happens on the call" — agenda for the 30-minute consultation.
+const items = [
+  {
+    title: "Your nonprofit and current situation",
+    text: "Tell us about your organization, your mission, and what’s happening with your Google Ad Grant today",
+  },
+  {
+    title: "Your challenges and goals",
+    text: "We’ll discuss what isn’t working, what you want to improve, and what results you’re hoping to achieve",
+  },
+  {
+    title: "How we can help",
+    text: "We’ll explain how our team works, answer your questions, and walk you through the next steps if it feels like a good fit",
+  },
+];
+---
+
+<section class="section" aria-labelledby="call-title">
+  <div class="container-page grid gap-6 lg:grid-cols-[1fr_1fr] lg:gap-14">
+    <div class="text-center lg:text-left">
+      <p class="eyebrow reveal">How it works</p>
+      <h2 id="call-title" class="h2 reveal mt-5">
+        What happens <br class="hidden lg:inline" />on the call
+      </h2>
+      <p class="lead reveal mx-auto mt-4 max-w-[600px] lg:mx-0 xl:mt-6">
+        In 30 minutes, you’ll get a clearer picture of what’s holding your Google
+        Ad Grant back, what can be improved, and what your next steps should be
+      </p>
+    </div>
+
+    <ol class="reveal-stagger space-y-3">
+      {
+        items.map((item, i) => (
+          <li class="flex gap-4 rounded-[24px] bg-cream px-4 py-5 xl:min-h-32 xl:gap-[22px] xl:px-[28px] xl:py-[27px]">
+            <span class="w-5 shrink-0 pt-1 font-mono text-[16px] font-medium text-muted xl:text-[14px]">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3 class="text-[20px] font-medium leading-[1.25] text-ink xl:text-[24px]">
+                {item.title}
+              </h3>
+              <p class="mt-2 text-[17px] leading-[1.35] text-ink/80 xl:mt-1.5">
+                {item.text}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

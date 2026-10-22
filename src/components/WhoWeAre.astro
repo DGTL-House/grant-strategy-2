@@ -1,0 +1,75 @@
+---
+import { BOOK_HREF } from "../consts";
+import Icon from "./Icon.astro";
+
+const pillars = [
+  {
+    icon: "layers",
+    title: "Deep nonprofit expertise",
+    text: "We understand the realities nonprofit teams face, from limited resources and small marketing teams to the need to make every dollar and every hour count",
+  },
+  {
+    icon: "shield-check",
+    title: "Google Ad Grant specialists",
+    text: "Our team focuses on Google Ad Grants and understands the program’s policies, account requirements, keyword limitations, compliance rules, and optimization challenges",
+  },
+  {
+    icon: "clock",
+    title: "Experience you can rely on",
+    text: "We’ve worked with nonprofit organizations across different sectors and understand the common problems that prevent Google Ad Grant accounts from reaching their potential",
+  },
+] as const;
+---
+
+<section class="section" aria-labelledby="who-title">
+  <div class="container-page">
+    <div class="text-center">
+      <p class="eyebrow reveal">Who we are</p>
+      <h2 id="who-title" class="h2 reveal mx-auto mt-5 max-w-[1040px]">
+        10 years with nonprofit organizations
+      </h2>
+      <p class="lead reveal mx-auto mt-4 max-w-[1000px] xl:mt-6">
+        DGTL-House is an agency that knows Google Ad Grants from the inside. 10
+        years, 200+ nonprofits, every typical failure scenario — and how to get
+        out of it.
+      </p>
+    </div>
+
+    <ul
+      class="reveal-stagger mt-8 grid gap-4 lg:grid-cols-3 xl:mt-[60px] xl:gap-[25px]"
+    >
+      {
+        pillars.map((p) => (
+          <li class="card-cream rounded-[24px] p-5 xl:min-h-[340px] xl:rounded-[40px] xl:p-[37px]">
+            <span class="grid size-[74px] place-items-center rounded-[20px] border border-[#cde2a8] bg-lime-soft text-olive">
+              <Icon name={p.icon} size={30} />
+            </span>
+            <h3 class="mt-7 text-[20px] font-medium leading-[1.3] text-ink xl:mt-[30px] xl:text-[24px]">
+              {p.title}
+            </h3>
+            <p class="mt-2 text-[17px] leading-[1.53] text-muted">{p.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div
+      class="reveal mt-4 flex flex-col items-center gap-6 rounded-[24px] bg-forest px-6 py-7 text-center text-white xl:mt-[25px] xl:min-h-[292px] xl:flex-row xl:justify-between xl:gap-12 xl:rounded-[40px] xl:px-14 xl:text-left"
+    >
+      <p
+        class="max-w-[860px] text-[20px] font-light leading-[1.4] xl:text-[32px] xl:leading-[1.41]"
+      >
+        With more than 10 years of experience focused exclusively on Google Ad
+        Grants, we’ve helped 200+ nonprofits across the U.S. improve visibility,
+        reach more relevant audiences, and get more value from their grant.
+      </p>
+      <a
+        href={BOOK_HREF}
+        class="btn btn-primary btn-lg w-full shrink-0 sm:w-auto xl:min-w-[262px]"
+      >
+        Book a call
+        <Icon name="arrow-right" size={18} />
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+---
+import { BOOK_HREF } from "../consts";
+import Icon from "./Icon.astro";
+
+const without = [
+  "Most of your $10K grant goes unused",
+  "Your website gets little relevant traffic",
+  "You pay for ads or don't advertise at all",
+  "You don't know what results to expect",
+  "You're unsure about grant compliance",
+  "You have no Google Ad Grants expert to turn to",
+];
+
+const withUs = [
+  "Make the most of your $10K monthly Google Ad Grant",
+  "Attract more relevant visitors to your website",
+  "Reach the right people without paying for ad clicks",
+  "You know within 30 minutes whether you qualify and what the Grant is worth for your mission",
+  "Get a clear plan with realistic goals and timelines",
+  "Identify compliance risks and keep your grant on track",
+  "You see a clear forecast: what's realistic for your mission and the timeline",
+];
+---
+
+<section id="benefits" class="section" aria-labelledby="ba-title">
+  <div class="container-page">
+    <div class="text-center">
+      <p class="eyebrow reveal">Before &amp; after</p>
+      <h2 id="ba-title" class="h2 reveal mx-auto mt-5 max-w-[900px]">
+        What changes with DGTL-House
+      </h2>
+      <p class="lead reveal mx-auto mt-4 max-w-[340px] sm:max-w-[920px] xl:mt-6">
+        See exactly what changes — from an unused resource to a steady traffic
+        engine.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4 lg:grid-cols-2 xl:mt-[60px] xl:gap-6">
+      <div
+        class="reveal min-w-0 rounded-[24px] border border-rose-line bg-rose p-6 xl:rounded-[32px] xl:p-[49px] xl:pr-8 xl:pt-[52px]"
+      >
+        <h3 class="text-[22px] font-normal text-ink xl:text-[28px]">
+          Without DGTL-House
+        </h3>
+        <ul class="mt-5 space-y-4 xl:mt-6 xl:space-y-5">
+          {
+            without.map((item) => (
+              <li class="flex gap-3 text-[17px] leading-[1.53] text-body xl:gap-[10px] xl:text-[20px] xl:leading-normal">
+                <Icon name="x-badge" size={24} class="mt-0.5 shrink-0 xl:mt-[3px]" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div
+        class="dark-panel reveal min-w-0 rounded-[24px] p-6 xl:rounded-[32px] xl:p-[49px] xl:pr-8 xl:pt-[52px]"
+      >
+        <h3 class="text-[22px] font-normal xl:text-[28px]">With DGTL-House</h3>
+        <ul class="mt-5 space-y-4 xl:mt-6 xl:space-y-5">
+          {
+            withUs.map((item) => (
+              <li class="flex gap-3 text-[17px] leading-[1.53] xl:gap-[10px] xl:text-[20px] xl:leading-normal">
+                <Icon name="check-badge" size={24} class="mt-0.5 shrink-0 xl:mt-[3px]" />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          href={BOOK_HREF}
+          class="btn btn-primary btn-lg mt-6 w-full sm:w-auto xl:mt-7 xl:min-w-[420px]"
+        >
+          Book a free consultation
+          <Icon name="arrow-right" size={18} />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
