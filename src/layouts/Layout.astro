@@ -8,7 +8,7 @@ interface Props {
 }
 
 const {
-  title = "Your Nonprofit Has $10,000/Month in Free Google Ads | DGTL House",
+  title = "Turn your underperforming Google Ad Grant into real results | DGTL House",
   description = "Free 30-min Google Ad Grant review for US nonprofits: see what's holding your $10,000/month grant back and how to reach more people who care about your mission.",
   image = "/og-image.webp",
 } = Astro.props;
@@ -168,16 +168,31 @@ const siteLd = {
 
     <!-- Meta Pixel — same ID as nonprofit-next -->
     <script is:inline>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '814203840958106');
-      fbq('track', 'PageView');
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "814203840958106");
+      fbq("track", "PageView");
     </script>
     <noscript
       ><img
