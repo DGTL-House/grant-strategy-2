@@ -11,7 +11,7 @@ import sitemap from "@astrojs/sitemap";
 // SITE_URL overrides it (e.g. for a preview domain); the default is the
 // production domain. https, not http: Vercel serves the site over TLS, and an
 // http canonical would point crawlers at a redirect.
-const site = process.env.SITE_URL ?? "https://grant-strategy.dgtl-house.com";
+const site = process.env.SITE_URL ?? "https://2step-strategy.dgtl-house.com";
 
 export default defineConfig({
   site,

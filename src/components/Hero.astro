@@ -1,5 +1,5 @@
 ---
-import { BOOK_HREF } from "../consts";
+import { BOOK_HREF, HERO_MOBILE } from "../consts";
 import Icon from "./Icon.astro";
 import PartnerChips from "./PartnerChips.astro";
 
@@ -43,12 +43,13 @@ const tiles = [
         sizes="calc(100vw - 80px)"
       />
       <img
-        src="/img/hero-750.webp"
+        src={HERO_MOBILE.src}
+        srcset={HERO_MOBILE.srcset}
+        sizes={HERO_MOBILE.sizes}
         alt="Smiling volunteers in blue “Volunteer” T-shirts working together outdoors"
-        width="750"
-        height="358"
+        width="600"
+        height="287"
         fetchpriority="high"
-        decoding="async"
         class="aspect-[335/160] w-full rounded-[24px] object-cover md:aspect-[1536/540] md:rounded-[40px] xl:aspect-auto xl:h-[310px] xl:rounded-[48px]"
       />
     </picture>
